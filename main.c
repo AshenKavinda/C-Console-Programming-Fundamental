@@ -342,13 +342,6 @@ void update_binfo()
     }
 
     fclose(ptr);
-/*
-    for(int i = 0 ; i < bcount ; i++)
-    {
-
-        printf("%d\n%d\n%d %d %d\n",binfoptr[i].index,binfoptr[i].bookid,binfoptr[i].year,binfoptr[i].month,binfoptr[i].day);
-    }
-*/
 }
 
 void BarrowBook()
@@ -522,7 +515,6 @@ void abstractFileBinfo(int bookid)
         bcopy = book[i].copy ;
         strcpy(bname,book[i].bookname);
         fprintf(ptr,"%d\n%s\n%d\n",bid,bname,bcopy);
-        //printf("%d\n%s\n%d\n",book[i].bookid,book[i].bookname,book[i].copy);
     }
 
     fclose(ptr);
@@ -554,7 +546,6 @@ void addFileBinfo(int bookid)
         bcopy = book[i].copy ;
         strcpy(bname,book[i].bookname);
         fprintf(ptr,"%d\n%s\n%d\n",bid,bname,bcopy);
-        //printf("%d\n%s\n%d\n",book[i].bookid,book[i].bookname,book[i].copy);
     }
 
     fclose(ptr);
@@ -592,10 +583,7 @@ void handOver()
             month = binfoptr[i].month ;
             day = binfoptr[i].day ;
 
-            //printf("book date = %d %d %d\n",year,month,day);
-
             int ddif = DateDifference(year,month,day);
-            //printf("difference = %d\n",ddif);
             int duedate = ddif-14 ;
             if (duedate >0)
             {
@@ -665,10 +653,6 @@ void handOver()
             int day = dublicatebinfo[i].day ;
 
             fprintf(ptr,"%d\n%d\n%d %d %d\n",index,bookid,year,month,day);
-            /*
-            printf("%d\n%d\n%d %d %d\n",
-                   dublicatebinfo[i].index,dublicatebinfo[i].bookid,dublicatebinfo[i].year,dublicatebinfo[i].month,dublicatebinfo[i].day);
-            */
         }
         fclose(ptr);
         addFileBinfo(bookid);
@@ -763,8 +747,6 @@ int DateDifference(int y1,int m1,int d1)
 	int yDya = ((dify-leapCount)*365) + (leapCount*366);
 
 	int ddays = yDya+monthdaycount+difd;
-
-	//printf("def = %d\n",ddays);
 	return ddays;
 
 
@@ -888,12 +870,6 @@ void lordRegDetail()
         i++ ;
     }
     fclose(ptr);
-    /*
-    for (int i = 0 ; i < pcount ; i++ )
-    {
-        printf("%s\n%s\n%d\n%d\n",persondata[i].name,persondata[i].nic,persondata[i].phone,persondata[i].index);
-    }
-    */
 }
 
 void paymentMenu()
@@ -1014,20 +990,6 @@ void lordPaymentData()
     int j = 0 ;
     while (fscanf(ptr,"%d",&paymentdata[j].index)==1)
     {
-        /*
-        fscanf(ptr,"%d",&paymentdata[j].m1);
-        fscanf(ptr,"%d",&paymentdata[j].m2);
-        fscanf(ptr,"%d",&paymentdata[j].m3);
-        fscanf(ptr,"%d",&paymentdata[j].m4);
-        fscanf(ptr,"%d",&paymentdata[j].m5);
-        fscanf(ptr,"%d",&paymentdata[j].m6);
-        fscanf(ptr,"%d",&paymentdata[j].m7);
-        fscanf(ptr,"%d",&paymentdata[j].m8);
-        fscanf(ptr,"%d",&paymentdata[j].m9);
-        fscanf(ptr,"%d",&paymentdata[j].m10);
-        fscanf(ptr,"%d",&paymentdata[j].m11);
-        fscanf(ptr,"%d",&paymentdata[j].m12);
-        */
         for (int i = 0 ; i < 12 ; i++)
         {
            fscanf(ptr,"%d",&paymentdata[j].arr[i]);
@@ -1035,12 +997,6 @@ void lordPaymentData()
         }
         j++;
     }
-    /*
-    for (int i = 0 ; i < 7 ; i++)
-    {
-        printf("%d - %d \n",paymentdata[i].index,paymentdata[i].arr[11]);
-    }
-    */
 }
 
 void updatePayamentFile()
@@ -1054,21 +1010,6 @@ void updatePayamentFile()
 
     for (int i = 0 ; i < pcount ; i++ )
     {
-        /*
-        fprintf(ptr,"%d ",paymentdata[i].index) ;
-        fprintf(ptr,"%d ",paymentdata[i].m1);
-        fprintf(ptr,"%d ",paymentdata[i].m2);
-        fprintf(ptr,"%d ",paymentdata[i].m3);
-        fprintf(ptr,"%d ",paymentdata[i].m4);
-        fprintf(ptr,"%d ",paymentdata[i].m5);
-        fprintf(ptr,"%d ",paymentdata[i].m6);
-        fprintf(ptr,"%d ",paymentdata[i].m7);
-        fprintf(ptr,"%d ",paymentdata[i].m8);
-        fprintf(ptr,"%d ",paymentdata[i].m9);
-        fprintf(ptr,"%d ",paymentdata[i].m10);
-        fprintf(ptr,"%d ",paymentdata[i].m11);
-        fprintf(ptr,"%d \n",paymentdata[i].m12);
-        */
         fprintf(ptr,"\n%d ",paymentdata[i].index) ;
         for (int j=0 ; j<12 ; j++)
         {
